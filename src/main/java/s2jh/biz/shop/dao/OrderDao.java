@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import s2jh.biz.shop.entity.Order;
 
 @Repository
-public interface OrderDao extends BaseDao<Order, Long> {
+public interface OrderDao extends BaseDao<Order, String> {
 
 }

@@ -31,15 +31,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name = "auth_UserExt")
 @MetaData(value = "用户扩展信息对象")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class UserExt extends BaseEntity<Long> {
+public class UserExt extends BaseEntity<String> {
 
     private static final long serialVersionUID = 8977448800400578128L;
 
     @MetaData(value = "共享主键", comments = "对应主对像ID")
     @Id
-    @Column(length = 128)
+    @Column(nullable = false, length = 32, unique = true)
     @JsonProperty
-    private Long id;
+    private String id;
 
     @MetaData(value = "注册时间")
     @DateTimeFormat(pattern = DateUtils.DEFAULT_TIME_FORMAT)

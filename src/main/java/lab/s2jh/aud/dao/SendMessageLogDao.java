@@ -7,6 +7,6 @@ import lab.s2jh.core.dao.jpa.BaseDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SendMessageLogDao extends BaseDao<SendMessageLog, Long> {
+public interface SendMessageLogDao extends BaseDao<SendMessageLog, String> {
 
 }

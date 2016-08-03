@@ -19,7 +19,7 @@ import com.google.common.collect.Maps;
 
 @Service
 @Transactional
-public class DataDictService extends BaseService<DataDict, Long> {
+public class DataDictService extends BaseService<DataDict, String> {
 
     private static final Logger logger = LoggerFactory.getLogger(DataDictService.class);
 
@@ -27,7 +27,7 @@ public class DataDictService extends BaseService<DataDict, Long> {
     private DataDictDao dataDictDao;
 
     @Override
-    protected BaseDao<DataDict, Long> getEntityDao() {
+    protected BaseDao<DataDict, String> getEntityDao() {
         return dataDictDao;
     }
 
@@ -42,7 +42,7 @@ public class DataDictService extends BaseService<DataDict, Long> {
      * @return
      */
     @Transactional(readOnly = true)
-    public List<DataDict> findChildrenById(Long id) {
+    public List<DataDict> findChildrenById(String id) {
         return findChildrenById(id, false);
     }
 
@@ -53,7 +53,7 @@ public class DataDictService extends BaseService<DataDict, Long> {
      * @return
      */
     @Transactional(readOnly = true)
-    public List<DataDict> findChildrenById(Long id, boolean withFlatChildren) {
+    public List<DataDict> findChildrenById(String id, boolean withFlatChildren) {
         return findChildrens(dataDictDao.findOne(id), withFlatChildren);
     }
 
@@ -113,7 +113,7 @@ public class DataDictService extends BaseService<DataDict, Long> {
      * @return
      */
     @Transactional(readOnly = true)
-    public Map<String, String> findMapDataById(Long id) {
+    public Map<String, String> findMapDataById(String id) {
         return findMapDatas(dataDictDao.findOne(id), false);
     }
 

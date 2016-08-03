@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PrivilegeDao extends BaseDao<Privilege, Long> {
+public interface PrivilegeDao extends BaseDao<Privilege, String> {
 
     @Query("from Privilege order by code asc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

@@ -147,8 +147,9 @@ public class RevisionEntityController extends BaseController<ExtDefaultRevisionE
         }
 
         String id = request.getParameter("id");
-        List<EntityRevision> entityRevisions = revisionEntityService.findEntityRevisions(entityClass, NumberUtils.isDigits(id) ? Long.valueOf(id)
-                : id, property, hasChanged);
+        /*List<EntityRevision> entityRevisions = revisionEntityService.findEntityRevisions(entityClass, NumberUtils.isDigits(id) ? Long.valueOf(id)
+                : id, property, hasChanged);*/
+        List<EntityRevision> entityRevisions = revisionEntityService.findEntityRevisions(entityClass,id, property, hasChanged);
         for (EntityRevision entityRevision : entityRevisions) {
             ExtDefaultRevisionEntity revEntity = entityRevision.getRevisionEntity();
             revEntity.setEntityClassName(clazz);
@@ -185,7 +186,7 @@ public class RevisionEntityController extends BaseController<ExtDefaultRevisionE
     @RequiresPermissions("配置管理:系统记录:数据变更记录")
     @RequestMapping(value = "/compare", method = RequestMethod.GET)
     public String revisionCompare(HttpServletRequest request, @RequestParam("clazz") String clazz,
-            @RequestParam(value = "entityId", required = false) Long entityId, @RequestParam("revs") Long[] revs) {
+            @RequestParam(value = "entityId", required = false) String entityId, @RequestParam("revs") Long[] revs) {
         Class<?> entityClass = ClassUtils.forName(request.getParameter("clazz"));
 
         //获取对应版本数组历史数据对象集合

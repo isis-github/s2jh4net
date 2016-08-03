@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SmsVerifyCodeDao extends BaseDao<SmsVerifyCode, Long> {
+public interface SmsVerifyCodeDao extends BaseDao<SmsVerifyCode, String> {
 
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     public SmsVerifyCode findByMobileNum(@Param("mobileNum") String mobileNum);

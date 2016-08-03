@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class PrivilegeService extends BaseService<Privilege, Long> {
+public class PrivilegeService extends BaseService<Privilege, String> {
 
     @Autowired
     private PrivilegeDao privilegeDao;
@@ -42,7 +42,7 @@ public class PrivilegeService extends BaseService<Privilege, Long> {
     private String authControlLevel;
 
     @Override
-    protected BaseDao<Privilege, Long> getEntityDao() {
+    protected BaseDao<Privilege, String> getEntityDao() {
         return privilegeDao;
     }
 

@@ -16,13 +16,13 @@ import com.google.common.collect.Lists;
 
 @Service
 @Transactional
-public class DepartmentService extends BaseService<Department, Long> {
+public class DepartmentService extends BaseService<Department, String> {
 
     @Autowired
     private DepartmentDao departmentDao;
 
     @Override
-    protected BaseDao<Department, Long> getEntityDao() {
+    protected BaseDao<Department, String> getEntityDao() {
         return departmentDao;
     }
 

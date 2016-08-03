@@ -25,7 +25,7 @@ import com.google.common.collect.Lists;
 
 @Service
 @Transactional
-public class SignupUserService extends BaseService<SignupUser, Long> {
+public class SignupUserService extends BaseService<SignupUser, String> {
 
     @Autowired
     private SignupUserDao signupUserDao;
@@ -43,7 +43,7 @@ public class SignupUserService extends BaseService<SignupUser, Long> {
     private UserExtDao userExtDao;
 
     @Override
-    protected BaseDao<SignupUser, Long> getEntityDao() {
+    protected BaseDao<SignupUser, String> getEntityDao() {
         return signupUserDao;
     }
 
@@ -74,10 +74,10 @@ public class SignupUserService extends BaseService<SignupUser, Long> {
 
     public User auditNewUser(SignupUser entity) {
         User user = entity.getUser();
-        Long[] selectedRoleIds = user.getSelectedRoleIds();
+        String[] selectedRoleIds = user.getSelectedRoleIds();
         if (selectedRoleIds != null && selectedRoleIds.length > 0) {
             List<UserR2Role> userR2Roles = Lists.newArrayList();
-            for (Long selectedRoleId : selectedRoleIds) {
+            for (String selectedRoleId : selectedRoleIds) {
                 UserR2Role r2 = new UserR2Role();
                 r2.setUser(user);
                 r2.setRole(roleDao.findOne(selectedRoleId));

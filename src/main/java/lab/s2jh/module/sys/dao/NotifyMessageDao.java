@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NotifyMessageDao extends BaseDao<NotifyMessage, Long> {
+public interface NotifyMessageDao extends BaseDao<NotifyMessage, String> {
 
     @Query("from NotifyMessage where effective=true order by orderRank desc,publishTime desc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

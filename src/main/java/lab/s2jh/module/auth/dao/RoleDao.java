@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleDao extends BaseDao<Role, Long> {
+public interface RoleDao extends BaseDao<Role, String> {
     @Query("from Role order by code asc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     List<Role> findAllCached();

@@ -82,7 +82,7 @@ public class RevisionEntityService extends BaseService<ExtDefaultRevisionEntity,
      * @return
      */
     @Transactional(readOnly = true)
-    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, Number id, Number... revs) {
+    public List<EntityRevision> findEntityRevisions(final Class<?> entityClass, String id, Number... revs) {
         List<EntityRevision> entityRevisions = Lists.newArrayList();
         AuditQuery auditQuery = AuditReaderFactory.get(entityManager).createQuery().forRevisionsOfEntity(entityClass, false, true);
         if (id != null) {

@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/admin/schedule/job-bean-cfg")
-public class JobBeanCfgController extends BaseController<JobBeanCfg, Long> {
+public class JobBeanCfgController extends BaseController<JobBeanCfg, String> {
 
     @Autowired
     private JobBeanCfgService jobBeanCfgService;
 
     @Override
-    protected BaseService<JobBeanCfg, Long> getEntityService() {
+    protected BaseService<JobBeanCfg, String> getEntityService() {
         return jobBeanCfgService;
     }
 
@@ -58,7 +58,7 @@ public class JobBeanCfgController extends BaseController<JobBeanCfg, Long> {
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 }

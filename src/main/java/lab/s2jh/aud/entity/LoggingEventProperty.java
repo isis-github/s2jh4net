@@ -35,7 +35,7 @@ public class LoggingEventProperty implements java.io.Serializable {
     private static final long serialVersionUID = -4730407775407355843L;
 
     @EmbeddedId
-    @AttributeOverrides({ @AttributeOverride(name = "eventId", column = @Column(name = "event_id", nullable = false)),
+    @AttributeOverrides({ @AttributeOverride(name = "eventId", column = @Column(name = "event_id", nullable = false,length = 32)),
             @AttributeOverride(name = "mappedKey", column = @Column(name = "mapped_key", nullable = false, length = 254)) })
     private LoggingEventPropertyId id;
 

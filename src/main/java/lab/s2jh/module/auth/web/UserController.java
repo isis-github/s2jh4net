@@ -47,7 +47,7 @@ import com.google.common.collect.Sets;
 
 @Controller
 @RequestMapping(value = "/admin/auth/user")
-public class UserController extends BaseController<User, Long> {
+public class UserController extends BaseController<User, String> {
 
     @Autowired
     private UserService userService;
@@ -62,13 +62,13 @@ public class UserController extends BaseController<User, Long> {
     private MenuService menuService;
 
     @Override
-    protected BaseService<User, Long> getEntityService() {
+    protected BaseService<User, String> getEntityService() {
         return userService;
     }
 
     @RequiresUser
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 
@@ -119,7 +119,7 @@ public class UserController extends BaseController<User, Long> {
     @RequiresPermissions("配置管理:权限管理:用户账号")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public OperationResult delete(@RequestParam("ids") Long... ids) {
+    public OperationResult delete(@RequestParam("ids") String... ids) {
         Validation.notDemoMode();
         return super.delete(ids);
     }
@@ -128,7 +128,7 @@ public class UserController extends BaseController<User, Long> {
     @RequiresPermissions("配置管理:权限管理:用户账号")
     @RequestMapping(value = "/privileges", method = RequestMethod.GET)
     public String privileges(Model model, @ModelAttribute("entity") User entity) {
-        Set<Long> r2PrivilegeIds = Sets.newHashSet();
+        Set<String> r2PrivilegeIds = Sets.newHashSet();
         List<Privilege> privileges = privilegeService.findAllCached();
         List<UserR2Role> userR2Roles = entity.getUserR2Roles();
         boolean isAdmin = false;

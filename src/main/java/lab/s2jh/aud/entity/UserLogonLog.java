@@ -38,14 +38,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name = "auth_UserLogonLog")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "用户登录登出历史记录")
-public class UserLogonLog extends PersistableEntity<Long> {
+public class UserLogonLog extends PersistableEntity<String> {
 
     private static final long serialVersionUID = 4034691676061136485L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "native")
-    private Long id;
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(nullable = false, length = 32, unique = true)
+    private String id;
 
     @MetaData(value = "账号全局唯一标识", comments = "同时作为SYS类型用户登录密码的SALT")
     @Column(length = 64, nullable = false)

@@ -5,6 +5,7 @@ package lab.s2jh.core.entity;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -32,14 +33,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(Include.NON_EMPTY)
 @MappedSuperclass
 @AuditOverrides({ @AuditOverride(forClass = BaseNativeEntity.class) })
-public abstract class BaseNativeEntity extends BaseEntity<Long> {
+public abstract class BaseNativeEntity extends BaseEntity<String> {
 
     private static final long serialVersionUID = 693468696296687126L;
 
     @MetaData("主键")
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "native")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(nullable = false, length = 32, unique = true)
     @JsonProperty
-    private Long id;
+    private String id;
 }

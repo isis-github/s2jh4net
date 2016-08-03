@@ -35,7 +35,7 @@ public class LoggingEventException implements java.io.Serializable {
     private static final long serialVersionUID = -1773975388851920530L;
 
     @EmbeddedId
-    @AttributeOverrides({ @AttributeOverride(name = "eventId", column = @Column(name = "event_id", nullable = false, precision = 38, scale = 0)),
+    @AttributeOverrides({ @AttributeOverride(name = "eventId", column = @Column(name = "event_id", nullable = false, length = 32)),
             @AttributeOverride(name = "i", column = @Column(name = "i", nullable = false)) })
     private LoggingEventExceptionId id;
 

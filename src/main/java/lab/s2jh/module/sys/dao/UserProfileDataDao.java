@@ -9,7 +9,7 @@ import lab.s2jh.module.sys.entity.UserProfileData;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserProfileDataDao extends BaseDao<UserProfileData, Long> {
+public interface UserProfileDataDao extends BaseDao<UserProfileData, String> {
 
     UserProfileData findByUserAndCode(User user, String code);
 

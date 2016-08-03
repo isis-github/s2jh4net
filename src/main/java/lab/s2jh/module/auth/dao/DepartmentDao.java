@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DepartmentDao extends BaseDao<Department, Long> {
+public interface DepartmentDao extends BaseDao<Department, String> {
 
     @Query("from Department")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

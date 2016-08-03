@@ -35,14 +35,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name = "sche_JobRunHist")
 @MetaData(value = "任务计划运行历史记录")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
-public class JobRunHist extends PersistableEntity<Long> {
+public class JobRunHist extends PersistableEntity<String> {
 
     private static final long serialVersionUID = -5759986321900611939L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "native")
-    private Long id;
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(nullable = false, length = 32, unique = true)
+    private String id;
 
     @MetaData(value = "Job名称")
     @Column(length = 64, nullable = true)

@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ConfigPropertyDao extends BaseDao<ConfigProperty, Long> {
+public interface ConfigPropertyDao extends BaseDao<ConfigProperty, String> {
 
     @Query("from ConfigProperty")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })

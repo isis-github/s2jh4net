@@ -22,8 +22,8 @@ public class LoggingEventExceptionId implements java.io.Serializable {
 
     private static final long serialVersionUID = -8095577133472687916L;
 
-    @Column(name = "event_id", nullable = false)
-    private Long eventId;
+    @Column(name = "event_id", nullable = false,length = 32)
+    private String eventId;
     
     @Column(name = "i", nullable = false)
     private short i;

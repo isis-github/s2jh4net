@@ -37,7 +37,7 @@ import com.google.common.collect.Maps;
 
 @Service
 @Transactional
-public class UserService extends BaseService<User, Long> {
+public class UserService extends BaseService<User, String> {
 
     @Autowired
     private UserDao userDao;
@@ -67,7 +67,7 @@ public class UserService extends BaseService<User, Long> {
     private FreemarkerService freemarkerService;
 
     @Override
-    protected BaseDao<User, Long> getEntityDao() {
+    protected BaseDao<User, String> getEntityDao() {
         return userDao;
     }
 

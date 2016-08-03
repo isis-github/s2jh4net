@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JobBeanCfgDao extends BaseDao<JobBeanCfg, Long> {
+public interface JobBeanCfgDao extends BaseDao<JobBeanCfg, String> {
 
     @Query("from JobBeanCfg")
     List<JobBeanCfg> findAll();

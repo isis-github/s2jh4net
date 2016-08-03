@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDao extends BaseDao<User, Long> {
+public interface UserDao extends BaseDao<User, String> {
 
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
     User findByAuthTypeAndAuthUid(AuthTypeEnum authType, String authUid);

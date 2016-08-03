@@ -23,6 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.RevisionEntity;
 import org.hibernate.envers.RevisionNumber;
 import org.hibernate.envers.RevisionTimestamp;
@@ -48,8 +49,10 @@ public class ExtDefaultRevisionEntity extends PersistableEntity<Long> {
 
     /** 记录版本 */
     @Id
-    @GeneratedValue
     @RevisionNumber
+    @GeneratedValue(generator = "idGenerator")
+    @GenericGenerator(name = "idGenerator", strategy = "native")
+    @Column(nullable = false,precision = 38,scale = 0)
     private Long rev;
 
     /** 记录时间 */

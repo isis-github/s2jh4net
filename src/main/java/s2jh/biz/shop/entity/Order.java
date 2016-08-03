@@ -39,7 +39,7 @@ public class Order extends BaseNativeEntity {
     private SiteUser siteUser;
 
     @MetaData(value = "订单号")
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 34, nullable = false, unique = true)
     private String orderNo;
 
     private Date submitTime;

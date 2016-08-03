@@ -45,15 +45,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name = "logging_event")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "日志事件", comments = "用于基于Logback日志DBAppender的ERROR日志数据存取")
-public class LoggingEvent extends PersistableEntity<Long> {
+public class LoggingEvent extends PersistableEntity<String> {
 
     private static final long serialVersionUID = 3807617732053699145L;
 
     @Id
-    @Column(name = "event_id")
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "native")
-    private Long id;
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(name = "event_id",nullable = false, length = 32, unique = true)
+    private String id;
 
     private Long timestmp;
 

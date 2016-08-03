@@ -65,7 +65,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 @Controller
-public class DocumentController extends BaseController<MockEntity, Long> {
+public class DocumentController extends BaseController<MockEntity, String> {
 
     private final static Logger logger = LoggerFactory.getLogger(DocumentController.class);
 
@@ -99,12 +99,12 @@ public class DocumentController extends BaseController<MockEntity, Long> {
     }
 
     @Override
-    protected BaseService<MockEntity, Long> getEntityService() {
+    protected BaseService<MockEntity, String> getEntityService() {
         return null;
     }
 
     @ModelAttribute
-    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) Long id) {
+    public void prepareModel(HttpServletRequest request, Model model, @RequestParam(value = "id", required = false) String id) {
         super.initPrepareModel(request, model, id);
     }
 

@@ -39,14 +39,15 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "sys_SendMessageLog")
 @Cache(usage = CacheConcurrencyStrategy.NONE)
 @MetaData(value = "发送消息记录", comments = "包括电子邮件，短信，推送等消息流水记录")
-public class SendMessageLog extends PersistableEntity<Long> {
+public class SendMessageLog extends PersistableEntity<String> {
 
     private static final long serialVersionUID = -541805294603254373L;
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "native")
-    private Long id;
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @Column(nullable = false, length = 32, unique = true)
+    private String id;
 
     @MetaData(value = "消息接受者")
     @Column(length = 300, nullable = false)

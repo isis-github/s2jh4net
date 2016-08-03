@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import s2jh.biz.shop.entity.SiteUser;
 
 @Repository
-public interface SiteUserDao extends BaseDao<SiteUser, Long> {
+public interface SiteUserDao extends BaseDao<SiteUser, String> {
 
     SiteUser findByUser(User user);
 }

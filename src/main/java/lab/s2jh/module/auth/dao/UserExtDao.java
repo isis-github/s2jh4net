@@ -6,7 +6,7 @@ import lab.s2jh.module.auth.entity.UserExt;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserExtDao extends BaseDao<UserExt, Long> {
+public interface UserExtDao extends BaseDao<UserExt, String> {
 
     UserExt findByRandomCode(String randomCode);
 }

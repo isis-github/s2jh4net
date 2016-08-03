@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MenuDao extends BaseDao<Menu, Long> {
+public interface MenuDao extends BaseDao<Menu, String> {
 
     @Query("from Menu order by inheritLevel asc, orderRank desc")
     @QueryHints({ @QueryHint(name = org.hibernate.jpa.QueryHints.HINT_CACHEABLE, value = "true") })
